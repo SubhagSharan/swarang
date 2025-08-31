@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organization Name — Official Site</title>
+  <meta name="description" content="Official website for Organization Name — mission, upcoming events, and ways to get in touch." />
+  <meta property="og:title" content="Organization Name — Official Site" />
+  <meta property="og:description" content="Learn about our mission, explore events, and contact us." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root{
+      --brand:#0f766e; /* Teal */
+      --brand-2:#0ea5a4; /* Lighter Teal */
+      --ink:#0b1320; --muted:#5b6475; --bg:#ffffff; --bg-alt:#f8fafc; --ring:rgba(15,118,110,.3);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e7eef5}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 5px 15px rgba(15,118,110,.35)}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a.btn{background:var(--brand);color:#fff;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.05)}
+    .nav a.btn:hover{filter:brightness(.95);text-decoration:none}
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{padding:72px 0;background:linear-gradient(180deg,#f1fffd,transparent)}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero h1{font-size:clamp(28px,3.4vw,44px);line-height:1.1;margin:0}
+    .hero p{color:var(--muted);font-size:18px;margin:14px 0 24px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .cta .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid #d9e1ea}
+    .btn.primary{background:var(--brand);color:#fff;border-color:transparent}
+    .btn.primary:hover{filter:brightness(.96)}
+    .btn.secondary:hover{background:#f1f5f9}
+    .hero-card{background:#fff;border:1px solid #e7eef5;border-radius:var(--radius);padding:18px;box-shadow:0 10px 30px rgba(2,8,23,.05)}
+    .hero-card h3{margin:0 0 10px}
+    .chip{display:inline-block;background:#ecfeff;color:#0e7490;border:1px solid #cffafe;padding:4px 10px;border-radius:999px;font-size:12px}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px}
+    h2{font-size:clamp(22px,2.4vw,30px);margin:0}
+    .muted{color:var(--muted)}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+    .card{background:#fff;border:1px solid #e7eef5;border-radius:var(--radius);padding:18px;box-shadow:0 6px 20px rgba(2,8,23,.04)}
+
+    /* Events */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .event{position:relative;overflow:hidden}
+    .event .tag{position:absolute;top:12px;left:12px}
+    .event h3{margin:8px 0 6px}
+    .event time{font-size:14px;color:var(--muted)}
+    .event .img{aspect-ratio:16/9;background:#e6fffb;border-radius:12px;border:1px solid #c7f9f2}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid #d9e1ea;border-radius:12px;font:inherit}
+    input:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px var(--ring);border-color:var(--brand)}
+    textarea{min-height:120px;resize:vertical}
+
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid #e7eef5;background:var(--bg-alt)}
+
+    /* Responsive */
+    @media (max-width:960px){
+      .hero-wrap,.about{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .menu-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d9e1ea;border-radius:12px;background:#fff}
+      .nav ul{display:none;position:absolute;right:18px;top:60px;background:#fff;border:1px solid #e7eef5;border-radius:12px;box-shadow:0 10px 30px rgba(2,8,23,.06);padding:10px}
+      .nav ul.open{display:flex;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand"><span class="logo" aria-hidden></span><span>Organization Name</span></a>
+      <button class="menu-btn" aria-label="Toggle menu" onclick="document.querySelector('.nav ul').classList.toggle('open')">☰ Menu</button>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn" href="#donate">Donate</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <span class="chip">Welcome</span>
+        <h1>We build community through <span style="color:var(--brand)">events, learning, and service</span>.</h1>
+        <p>Use this starter to publish your organization’s mission, showcase upcoming events, and make it easy for people to reach you.
+        Replace text and images and deploy in minutes.</p>
+        <div class="cta">
+          <a class="btn primary" href="#events">See Upcoming Events →</a>
+          <a class="btn secondary" href="#about">Learn About Us</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Next Highlight</h3>
+        <p class="muted">Add details of your flagship event here: what, when, where, and who should join.</p>
+        <ul class="muted" style="margin:0 0 0 18px">
+          <li>Date: 10 Oct 2025, 6:00 PM</li>
+          <li>Venue: Community Hall</li>
+          <li>Tickets: Free</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div class="card">
+        <div class="section-head"><h2>About the Organization</h2><p class="muted">Our mission & story</p></div>
+        <p>Write a crisp overview: who you are, what you do, who you serve. Keep it human and specific. Add 3–4 bullet points on impact or programs.</p>
+        <ul>
+          <li>Community workshops and learning circles</li>
+          <li>Annual festival and cultural events</li>
+          <li>Volunteer-led outreach initiatives</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li>Founded: 2018</li>
+          <li>Members: 250+</li>
+          <li>City: Your City, Country</li>
+          <li>Nonprofit ID: 123-456</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events">
+    <div class="container">
+      <div class="section-head"><h2>Upcoming Events</h2><a href="#contact">Propose an event →</a></div>
+      <div class="grid">
+        <article class="card event">
+          <span class="chip tag">Featured</span>
+          <div class="img" role="img" aria-label="Event image placeholder"></div>
+          <h3>Community Meetup</h3>
+          <time datetime="2025-10-10">10 Oct 2025 • 6:00 PM</time>
+          <p class="muted">Casual gathering to share updates and welcome new members.</p>
+        </article>
+        <article class="card event">
+          <div class="img" role="img" aria-label="Event image placeholder"></div>
+          <h3>Workshop: Creative Arts</h3>
+          <time datetime="2025-10-24">24 Oct 2025 • 4:00 PM</time>
+          <p class="muted">Hands-on session exploring art, movement, music, and storytelling.</p>
+        </article>
+        <article class="card event">
+          <div class="img" role="img" aria-label="Event image placeholder"></div>
+          <h3>Volunteer Drive</h3>
+          <time datetime="2025-11-02">2 Nov 2025 • 10:00 AM</time>
+          <p class="muted">Learn how to get involved and support our programs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donate / Support -->
+  <section id="donate">
+    <div class="container">
+      <div class="section-head"><h2>Support Our Work</h2><p class="muted">Every contribution helps</p></div>
+      <div class="card">
+        <p>Share how people can support you: donations, sponsorships, volunteering, or in-kind help. Add a button to your preferred payment link or a mailto for sponsorship.</p>
+        <p><a class="btn primary" href="#" target="_blank" rel="noopener">Donate Now</a> <a class="btn" href="#contact">Become a Volunteer</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head"><h2>Contact Us</h2><p class="muted">We’d love to hear from you</p></div>
+      <div class="card">
+        <!--
+          CONTACT FORM NOTES
+          1) Works out-of-the-box with services like Formspree, Basin, Getform, Netlify Forms.
+          2) Replace the `action` URL below with your form endpoint (e.g., https://formspree.io/f/xxxxxx).
+          3) Or change to `mailto:you@example.com` for basic email (opens user’s client; less reliable).
+        -->
+        <form action="https://example.com/your-form-endpoint" method="POST">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <input name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <input name="subject" placeholder="Subject" />
+          <textarea name="message" placeholder="Your message" required></textarea>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)"><input type="checkbox" required /> I agree to be contacted back.</label>
+          <button class="btn primary" type="submit">Send Message</button>
+        </form>
+      </div>
+      <p class="muted" style="margin-top:12px">Email: <a href="mailto:info@org.example">info@org.example</a> • Phone: +91 90000 00000 • Address: Your Address here</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <p style="margin:0">© <span id="year"></span> Organization Name. All rights reserved.</p>
+      <p style="margin:0" class="muted"><a href="#about">About</a> · <a href="#events">Events</a> · <a href="#contact">Contact</a> · <a href="#">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
